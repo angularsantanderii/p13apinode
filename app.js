@@ -18,14 +18,14 @@ mongoose.connect(mongoURI, options)
 const clientes = require('./routes/clientes');
 
 app.use(express.json());
-app.use((req, res, next)=> {
-    if (req.get('authorization') !== '1234') {
-        return res.status(401).json({
-            mensaje: 'Acceso no autorizado'
-        })
-    }
-    next();
-})
+// app.use((req, res, next)=> {
+//     if (req.get('authorization') !== '1234') {
+//         return res.status(401).json({
+//             mensaje: 'Acceso no autorizado'
+//         })
+//     }
+//     next();
+// })
 app.use('/clientes', clientes);
 app.use('/*', (req, res) => {
     res.status(404).json({
